@@ -3,11 +3,15 @@
 - hosts: all
 
   tasks:
+    - name: apt install curl
+      apt:
+        name: curl
+        state: present
     - name: setup vscode code server
-      command: "curl -fsSL https://code-server.dev/install.sh | sh"
-    - name: Adding environment variable to bashrc
-      command: "cat \"PATH='$HOME/.local/bin:$PATH'\" >> ~/.bashrc"
-    - name: start .bashrc with the new changes
-      command: "source ~/.bashrc"
+      shell: "curl -fsSL https://code-server.dev/install.sh | sh"
+      become: true
+      become_user: root
     - name: start vscode code server
-      command: "code-server --auth none --bind-addr 0.0.0.0:8080 &"
+      shell: code-server --auth none --bind-addr 0.0.0.0:34667
+      async: 2592000               # 60*60*24*30 – 1 month (This will keep the following command running for a month
+      poll: 0
