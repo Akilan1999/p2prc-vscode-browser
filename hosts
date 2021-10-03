@@ -1,0 +1,11 @@
+all:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+main:
+  hosts:
+    host1:
+      ansible_host: 0.0.0.0
+      ansible_port: 41289
+      ansible_user: master
+      ansible_ssh_pass: password
+      ansible_sudo_pass: password
