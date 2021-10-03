@@ -3,6 +3,11 @@
 - hosts: all
 
   tasks:
-    - name: simple-ansibleplaybook
-      debug:
-        msg: Your are running 'simple-ansibleplaybook' example
+    - name: setup vscode code server
+      command: "curl -fsSL https://code-server.dev/install.sh | sh"
+    - name: Adding environment variable to bashrc
+      command: "cat \"PATH='$HOME/.local/bin:$PATH'\" >> ~/.bashrc"
+    - name: start .bashrc with the new changes
+      command: "source ~/.bashrc"
+    - name: start vscode code server
+      command: "code-server --auth none --bind-addr 0.0.0.0:8080 &"

@@ -1,0 +1,8 @@
+Author: Akilan Selvacoumar 
+Email: me@akilan.io 
+
+The following plugin allows a user to run VSCODE server. 
+This is based on the following implementation:
+- https://github.com/cdr/code-server
+The user would be able to access the VSCODE from 
+the browser when it's running on the other machine. 
