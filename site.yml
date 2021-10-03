@@ -12,6 +12,6 @@
       become: true
       become_user: root
     - name: start vscode code server
-      shell: code-server --auth none --bind-addr 0.0.0.0:34667
+      shell: code-server --auth none --bind-addr 0.0.0.0:{{index . 0}}
       async: 2592000               # 60*60*24*30 – 1 month (This will keep the following command running for a month
       poll: 0
